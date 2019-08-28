@@ -16,4 +16,11 @@ class BlogsController extends Controller
 
         return view('blogs', ['blogs' => $blogs]);
     }
+
+    public function getBlogById($id)
+    {
+        $blog = Blogs::find($id);
+
+        return view('blog', ['blog' => $blog]);
+    }
 }

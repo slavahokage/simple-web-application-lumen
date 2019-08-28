@@ -20,3 +20,5 @@ $router->get('/news', 'NewsController@getNews');
 $router->get('/contacts', 'ContactsController@getContacts');
 
 $router->get('/blogs', 'BlogsController@getBlogs');
+
+$router->get('blog/{id}', 'BlogsController@getBlogById');
