@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Contacts;
+
 class ContactsController extends Controller
 {
-    protected const CONTACTS = ['first contact', 'second contact', 'third contact'];
-
     public function getContacts()
     {
-        return json_encode(self::CONTACTS);
+        return view('contacts', ['contacts' => Contacts::all()]);
     }
 }

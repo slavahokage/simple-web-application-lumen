@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
+
 class NewsController extends Controller
 {
-    protected const NEWS = ['first new', 'second new', 'third new'];
-
     public function getNews()
     {
-        return json_encode(self::NEWS);
+        return view('news', ['news' => News::all()]);
     }
 }
