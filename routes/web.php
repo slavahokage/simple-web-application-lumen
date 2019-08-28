@@ -14,3 +14,7 @@
 $router->get('/', function () use ($router) {
     return 'Hello world!';
 });
+
+$router->get('/news', 'NewsController@getNews');
+
+$router->get('/contacts', 'ContactsController@getContacts');
