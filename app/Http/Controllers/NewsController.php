@@ -32,14 +32,11 @@ class NewsController extends Controller
             setcookie('title', $request->input('title'));
             setcookie('description', $request->input('description'));
 
-            return redirect('/news/new');
+            return redirect()->route('create_news');
         }
 
-        $new = new News();
-        $new->title = $request->input('title');
-        $new->description = $request->input('description');
-        $new->save();
+        News::create($request->all());
 
-        return redirect('/news');
+        return redirect()->route('news');
     }
 }
