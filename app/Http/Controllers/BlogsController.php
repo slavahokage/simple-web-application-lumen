@@ -10,11 +10,9 @@ class BlogsController extends Controller
 {
     public function getBlogs(Request $request)
     {
-        $page = $request->input('page');
+        $blogs = DB::table('blogs')->paginate(5);
 
-        $blogs = empty($page) ? Blogs::all() : DB::table('blogs')->paginate(5);
-
-        return view('blogs', ['blogs' => $blogs]);
+        return view('blogs', compact('blogs'));
     }
 
     public function getBlogById($id)
