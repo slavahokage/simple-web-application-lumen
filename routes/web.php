@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return 'Hello world!';
 });
 
-$router->get('/news', 'NewsController@getNews')->name('news');;
+$router->get('/news', 'NewsController@getNews')->name('news');
 
 $router->get('/contacts', 'ContactsController@getContacts');
 

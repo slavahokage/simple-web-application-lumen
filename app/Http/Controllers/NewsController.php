@@ -20,6 +20,16 @@ class NewsController extends Controller
         return view('create-news', ['errors' => $errors]);
     }
 
+    public function update($id)
+    {
+
+    }
+
+    public function delete($id)
+    {
+
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
