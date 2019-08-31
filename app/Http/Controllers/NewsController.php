@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Request\NewsStoreRequest;
 use App\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
@@ -20,21 +20,8 @@ class NewsController extends Controller
         return view('create-news', ['errors' => $errors]);
     }
 
-    public function store(Request $request)
+    public function store(NewsStoreRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|filled',
-            'description' => 'required|filled',
-        ]);
-
-        if ($validator->fails()) {
-            $request->session()->flash('errors', $validator->errors()->getMessages());
-            setcookie('title', $request->input('title'));
-            setcookie('description', $request->input('description'));
-
-            return redirect()->route('create_news');
-        }
-
         News::create($request->all());
 
         return redirect()->route('news');
