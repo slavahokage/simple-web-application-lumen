@@ -40,3 +40,7 @@ $router->get('/products/show', ['as' => 'products_show', 'uses' => 'ProductsCont
 $router->post('/products/store', 'ProductsController@storeProducts');
 
 $router->post('/products/delete', 'ProductsController@deleteProducts');
+
+$router->post('/session/create', 'SessionController@createSession');
+
+$router->delete('/session/delete', 'SessionController@deleteSession');
