@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return 'Hello world!';
 });
 
-$router->get('/news', 'NewsController@getNews')->name('news');
+$router->get('/news', ['as' => 'news', 'uses' => 'NewsController@getNews']);
 
 $router->get('/contacts', 'ContactsController@getContacts');
 
@@ -25,6 +25,10 @@ $router->get('/blog/{id}', 'BlogsController@getBlogById');
 
 $router->get('/posts', 'PostsController@getPosts');
 
-$router->get('/news/new', 'NewsController@new')->name('create_news');
+$router->get('/news/new', ['as' => 'create_news', 'uses' => 'NewsController@new']);
 
-$router->post('/news/store', 'NewsController@store');
+$router->post('/news/store[/{id}]', 'NewsController@store');
+
+$router->post('/news/delete', 'NewsController@delete');
+
+$router->get('/news/update/{id}', 'NewsController@update');
