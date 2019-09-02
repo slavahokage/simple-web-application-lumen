@@ -27,4 +27,12 @@ $router->get('/posts', 'PostsController@getPosts');
 
 $router->get('/news/new', ['as' => 'create_news', 'uses' => 'NewsController@new']);
 
-$router->post('/news/store', 'NewsController@store');
+$router->post('/news/store[/{id}]', 'NewsController@store');
+
+$router->post('/news/delete', 'NewsController@delete');
+
+$router->get('/news/edit/{id}', 'NewsController@edit');
+
+$router->post('/news/update/{id}', 'NewsController@update');
+
+$router->get('/news/show/{id}', 'NewsController@show');

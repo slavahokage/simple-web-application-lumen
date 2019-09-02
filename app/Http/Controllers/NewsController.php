@@ -8,22 +8,54 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function getNews()
+    public function getNews(Request $request)
     {
-        return view('news', ['news' => News::all()]);
+        $message = $request->session()->get('success');
+
+        return view('news', ['news' => News::all(), 'message' => $message]);
     }
 
-    public function new(Request $request)
+    public function new()
     {
-        $errors = $request->session()->get('errors');
+        return view('create-news');
+    }
 
-        return view('create-news', ['errors' => $errors]);
+    public function edit($id)
+    {
+        return view('news-edit', ['news' => News::find($id)]);
+    }
+
+    public function delete(Request $request)
+    {
+        News::find($request->input('id'))->delete();
+
+        $request->session()->flash('success', 'successfully delete');
+
+        return redirect()->route('news');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $news = News::find($id);
+        $news->fill($request->all());
+        $news->save();
+
+        $request->session()->flash('success', 'successfully update');
+
+        return redirect()->route('news');
     }
 
     public function store(NewsStoreRequest $request)
     {
         News::create($request->all());
 
+        $request->session()->flash('success', 'successfully store');
+
         return redirect()->route('news');
+    }
+
+    public function show($id)
+    {
+        return view('news-display-one', ['news' => News::find($id)]);
     }
 }
