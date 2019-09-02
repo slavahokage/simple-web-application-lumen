@@ -44,3 +44,7 @@ $router->post('/products/delete', 'ProductsController@deleteProducts');
 $router->post('/session/create', 'SessionController@createSession');
 
 $router->delete('/session/delete', 'SessionController@deleteSession');
+
+$router->get('/createFlash', 'FlashController@createFlash');
+
+$router->get('/displayFlash', ['as' => 'display_flash', 'uses' => 'FlashController@displayFlash']);
