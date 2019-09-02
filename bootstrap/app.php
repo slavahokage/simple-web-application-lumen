@@ -103,6 +103,7 @@ $app->withEloquent();
 
 $app->middleware([
     \Illuminate\Session\Middleware\StartSession::class,
+    App\Http\Middleware\VerifyCsrfToken::class
 ]);
 
 $app->singleton(Illuminate\Session\SessionManager::class, function () use ($app) {

@@ -2,6 +2,7 @@
 <h1>Create news</h1>
 
 <form method="post" action="/news/store">
+    <input type="hidden" name="_token" value="{{ app('request')->session()->get('_token') }}">
     <table>
         <tr>
             <td>Title:</td>
