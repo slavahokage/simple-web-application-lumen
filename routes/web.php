@@ -31,4 +31,8 @@ $router->post('/news/store[/{id}]', 'NewsController@store');
 
 $router->post('/news/delete', 'NewsController@delete');
 
-$router->get('/news/update/{id}', 'NewsController@update');
+$router->get('/news/edit/{id}', 'NewsController@edit');
+
+$router->post('/news/update/{id}', 'NewsController@update');
+
+$router->get('/news/show/{id}', 'NewsController@show');
