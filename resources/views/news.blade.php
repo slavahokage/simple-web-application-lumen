@@ -6,6 +6,7 @@
         @endif
         @foreach ($news as $new)
                 <form method="post" action="/news/delete">
+                        <input type="hidden" name="_token" value="{{ app('request')->session()->get('_token') }}">
                         <li> {{ $new->title }} - {{ $new->description }} </li>
                         <button name="id" value="{{ $new->id }}" type="submit">delete</button>
                 </form>

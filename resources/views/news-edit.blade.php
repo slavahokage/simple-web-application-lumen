@@ -2,6 +2,7 @@
 <h1>Edit news</h1>
 
 <form method="post" action="/news/update/{{$news->id}}">
+    <input type="hidden" name="_token" value="{{ app('request')->session()->get('_token') }}">
     <table>
         <tr>
             <td>Title:</td>
